@@ -1,30 +1,66 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
-                xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 
-    <hr/>
+	<style>
+/* CSS styles */
+h3 {
+	color: #3D52A0;
+	margin-top: 0;
+	padding-top: 0;
+	margin-bottom: 5px;
+	transition: color 0.3s ease;
+	
+}
+h3:hover {
+    color: #7091E6;
+}
 
-    <style>
-        /* CSS styles */
-        h5 {
-            color: #004080; /* Dark blue color */
-            margin-top: 0; /* Remove default margin from the top of the h5 element */
-            padding-top: 0; /* Remove default padding from the top of the h5 element */
-            margin-bottom: 5px; /* Add some space between the image and the h5 text */
-        }
-    </style>
-    
-    <h:panelGroup style="font-size:20pt; font-weight:bold;">
-        <h:graphicImage value="/resources/finalLogo.png" alt="IKARUS Logo" width="70px" height="70px" />
-        <h5>IKARUS</h5>
-    </h:panelGroup>
+#myPanel {
+	width: 50%;
+	margin: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 15pt
+}
 
-    <h:panelGroup layout="block" style="float:right;">
-        <h:outputLink value="index.jsf">
-            Начало
-        </h:outputLink> |
-    </h:panelGroup>
+hr {
+	height: 8px;
+	background-color: #3D52A0;
+	margin: 5px 0; 
+	
+	transition: background-color 0.3s ease;
+}
 
-    <hr/>
+hr:hover {
+    background-color: #7091E6;
+}
+
+</style>
+
+<hr />
+
+<h:panelGroup style="font-size:20pt; font-weight:bold;">
+
+
+<h:panelGroup id="myPanel" layout="block" style="float:right; vertical-align: top;">
+	<h:outputLink value="index.jsf">Начало</h:outputLink> |
+	<h:outputLink value="register.jsf">Регистрация</h:outputLink> |
+</h:panelGroup>
+
+
+	<h:graphicImage value="/resources/finalLogo.png" alt="IKARUS Logo"
+		width="100px" height="100px" />
+	<h3>IKARUS</h3>	
+	
+	
+
+</h:panelGroup>
+
+
+
+<hr />
+
 </ui:composition>

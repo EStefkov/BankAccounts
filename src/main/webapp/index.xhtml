@@ -8,32 +8,27 @@
 <h:head>
     <title>IKARUS</title>
     <style>
-        /* CSS styles */
-        body {
-            background-image: url("/resources/3393549.jpg");
-            background-repeat: no-repeat; 
-            background-size: cover; /* Adjust background-size property */
-        }
-
-        p {
-            margin: 0px;
-        }
-
-        p ~ p {
-            margin-top: 10px;
-            text-indent: 20px;
-        }
-
-        h2 {
-            color: #445; 
-            font-family: Arial, sans-serif; 
-            font-size: 24px; 
-            margin-bottom: 10px; 
-        }
+        /* CSS styles
+        colors 
+      	EDE8F5
+      	ADBBDA
+      	8697C4
+      	7091E6
+      	3D52A0
+      	
+        */
+       body {
+            background-color: #EDE8F5;
+            
+       }
     </style>
+    
+    
 </h:head>
 
 <h:body style="padding:10px 100px;">
+
+<h:outputStylesheet name="/style/Index.css" />
     <!-- Include the header -->
     <ui:include src="header.xhtml" />
 
