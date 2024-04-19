@@ -19,37 +19,38 @@ body {
 	<ui:include src="header.xhtml" />
 
 	<h:form>
-		<h:panelGrid columns="2">			
-				
-					<h:outputLabel value="Име" for="name"/>
-					<h:inputText id="name"/>
-
-					<h:outputLabel value="Електронна поща" for="email"/>
-					<h:inputText id="email"/>
-
-					<h:outputLabel value="Валута" for="currency"/>
-					<h:selectOneMenu value="#{currency}">
-						<f:selectItem itemValue="USD" itemLabel="USD" />
-						<f:selectItem itemValue="EUR" itemLabel="EUR" />
-						<f:selectItem itemValue="GBP" itemLabel="GBP" />
-					</h:selectOneMenu>
+		<h:panelGrid columns="2">
+			Име <h:inputText required="true" id="name" value="#{Users.titularNames}"/>
+			
 					
-					<h:outputLabel value="Баланс" for="balance"/> <h:outputText/>
-					<h:outputLabel value="Лихвен процент" for="interestRate"/> <h:inputText value="#{interestRate}" id="interestRate"/>
+			<h:outputLabel value="Валута" for="currency"/>
+    		<h:selectOneMenu value="#{Users.currency}">
+				<f:selectItem itemValue="USD" itemLabel="USD" />
+				<f:selectItem itemValue="EUR" itemLabel="EUR" />
+				<f:selectItem itemValue="GBP" itemLabel="GBP" />
+			</h:selectOneMenu>
+			
+			<h:outputLabel value="Баланс" for="balance"/>
+			<h:outputText value="#{Users.currentBalance}" id="balance"/>
+			
+			<h:outputLabel value="Лихвен процент" for="interestRate"/>
+			<h:outputText value="#{Users.interestRate}" id="interestRate"/>
 					
-					<h:outputLabel value="Дата на отваряне на сметка" for="openingDate"/>
-					<h:inputText id="openingDate" for="date">
-    					<f:convertDateTime pattern="yyyy-MM-dd" />
-					</h:inputText>
-					Вид на сметката  
-					<h:selectOneRadio value="#{accountType}">
-            			<f:selectItem itemValue="Дебитна" itemLabel="Дебитна"/>
-            			<f:selectItem itemValue="Кредитна" itemLabel="Кредитна"/>
-            			<f:selectItem itemValue="Спестовна" itemLabel="Спестовна"/>
-            			<f:ajax render="interestRate" listener="#{updateInterestRate}"/>
-        			</h:selectOneRadio>
+			<h:outputLabel value="Година на отваряне на сметка" for="peningYear"/>
+			<h:inputText id="peningYear" value="#{Users.openingYear}">
+			</h:inputText>
+			
+			
+			<h:outputLabel value="Вид на сметката" />
+			<h:selectOneRadio value="#{Users.accountType}">
+    			<f:selectItem itemValue="Дебитна" itemLabel="Дебитна" />
+    			<f:selectItem itemValue="Кредитна" itemLabel="Кредитна" />
+    			<f:selectItem itemValue="Спестовна" itemLabel="Спестовна" />
+			</h:selectOneRadio>
 
-			<h:commandButton value="Изпрати" />
+
+			<h:commandButton value="Изпрати" action="#{Users.send()}"/>	 
+			
 		</h:panelGrid>
 	</h:form>
 
