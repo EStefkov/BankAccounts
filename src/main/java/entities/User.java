@@ -1,6 +1,5 @@
 package entities;
 
-<<<<<<< Updated upstream
 /*в ентитиес създаваме управляем клас  който да събира 
  * информация за  потребителя
  *  */
@@ -12,6 +11,7 @@ public class User {
 	private double interestRate;
 	private int openingYear;
 	private String accountType;
+	
 	
 	public User(String titularNames, String currency, double currentBalance, double interestRate, int openingYear,
 			String accountType) {
@@ -77,8 +77,4 @@ public class User {
 	}
 	
 	
-=======
-public class User {
-
->>>>>>> Stashed changes
 }
