@@ -1,5 +1,6 @@
 package entities;
 
+<<<<<<< Updated upstream
 /*в ентитиес създаваме управляем клас  който да събира 
  * информация за  потребителя
  *  */
@@ -76,4 +77,8 @@ public class User {
 	}
 	
 	
+=======
+public class User {
+
+>>>>>>> Stashed changes
 }
