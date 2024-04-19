@@ -4,7 +4,6 @@
 
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
-  
   <servlet>
     <servlet-name>Faces Servlet</servlet-name>
     <servlet-class>jakarta.faces.webapp.FacesServlet</servlet-class>
@@ -15,12 +14,5 @@
     <servlet-name>Faces Servlet</servlet-name>
     <url-pattern>*.jsf</url-pattern>
 </servlet-mapping>
-<servlet-mapping>
-	<servlet-name>registerAcc</servlet-name>
-	<url-pattern>/registerAcc</url-pattern>
-</servlet-mapping>
-  
   
 </web-app>
-
-
