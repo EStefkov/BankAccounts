@@ -1,0 +1,30 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <hr/>
+
+    <style>
+        /* CSS styles */
+        h5 {
+            color: #004080; /* Dark blue color */
+            margin-top: 0; /* Remove default margin from the top of the h5 element */
+            padding-top: 0; /* Remove default padding from the top of the h5 element */
+            margin-bottom: 5px; /* Add some space between the image and the h5 text */
+        }
+    </style>
+    
+    <h:panelGroup style="font-size:20pt; font-weight:bold;">
+        <h:graphicImage value="/resources/finalLogo.png" alt="IKARUS Logo" width="70px" height="70px" />
+        <h5>IKARUS</h5>
+    </h:panelGroup>
+
+    <h:panelGroup layout="block" style="float:right;">
+        <h:outputLink value="index.jsf">
+            Начало
+        </h:outputLink> |
+    </h:panelGroup>
+
+    <hr/>
+</ui:composition>
