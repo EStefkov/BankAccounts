@@ -8,7 +8,7 @@ public class Database {
     private static int idCounter = 1;
 
     public static ArrayList<User> getUsers() {
-        return users;
+        return  new ArrayList<>(users);
     }
 
     public static void addUser(User user) {
