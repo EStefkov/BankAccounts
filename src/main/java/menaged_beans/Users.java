@@ -130,7 +130,13 @@ public class Users implements Serializable {
         Gson gson = new Gson();
         User user = Database.getUserById(this.userId);
         if (user != null) {
-            user.setCurrentBalance(user.getCurrentBalance() + this.amount);
+            if ("debit".equals(user.getAccountType())) {
+                user.setCurrentBalance(user.getCurrentBalance() + this.amount - (this.amount * 0.05)); // 2% interest rate
+            } else if ("credit".equals(user.getAccountType())) {
+                user.setCurrentBalance(user.getCurrentBalance() + this.amount); // 5% interest rate
+            } else if ("savings".equals(user.getAccountType())) {
+                user.setCurrentBalance(user.getCurrentBalance() + this.amount - (this.amount * 0.03)); // 3% interest rate
+            }
             Database.updateUser(user);
             return gson.toJson("success");
         } else {
@@ -138,33 +144,32 @@ public class Users implements Serializable {
         }
     }
     
- // Полето за съхранение на намерения потребител
     private User foundUser;
 
-    // Гетър и сетър за полето
-    public User getFoundUser() {
-        return foundUser;
-    }
+ // Гетър и сетър за полето
+ public User getFoundUser() {
+     return foundUser;
+ }
 
-    public void setFoundUser(User foundUser) {
-        this.foundUser = foundUser;
-    }
+ public void setFoundUser(User foundUser) {
+     this.foundUser = foundUser;
+ }
 
-    // Метод за търсене на потребител по ID
-    @POST
-    @Path("/getUserById")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public String getUserById() {
-        Gson gson = new Gson();
-        User user = Database.getUserById(this.userId);
-        if (user != null) {
-            this.foundUser = user; // Задаване на намерения потребител
-            return gson.toJson("success");
-        } else {
-            return gson.toJson("failure");
-        }
-    }
+ // Метод за търсене на потребител по ID
+ @POST
+ @Path("/getUserById")
+ @Consumes(MediaType.APPLICATION_JSON)
+ @Produces(MediaType.APPLICATION_JSON)
+ public String getUserById() {
+     Gson gson = new Gson();
+     User user = Database.getUserById(this.userId);
+     if (user != null) {
+         this.foundUser = user; // Задаване на намерения потребител
+         return gson.toJson("success");
+     } else {
+         return gson.toJson("failure");
+     }
+ }
     
 
     public void send() {
