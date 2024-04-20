@@ -1,15 +1,16 @@
 package menaged_beans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 
 import dao.Database;
 import entities.User;
-import jakarta.enterprise.context.RequestScoped;
+import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Named;
 
 @Named
-@RequestScoped
+@SessionScoped
 public class Users implements Serializable  {
 
     private String titularNames;
@@ -80,16 +81,18 @@ public class Users implements Serializable  {
     public void setAccountType(String accountType) {
         this.accountType = accountType;
     }
+    
+    public ArrayList<User> getUsers() {
+        return Database.getUsers();
+    }
 
-    public String send() {
-        // Валидация на данните, ако е необходимо
-
-        // Създаване на нов потребител
+    public void send() {
+       
         User user = new User(titularNames, currency, currentBalance, interestRate, openingYear, accountType);
 
-        // Добавяне на потребителя към базата данни
+        
         Database.addUser(user);
 
-        return "success"; // Върнете към подходяща страница, например "success"
+        //smenqme void na string return "success"; // 
     }
 }

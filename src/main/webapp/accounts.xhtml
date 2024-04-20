@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+<h:head>
+    <title>Bank Accounts</title>
+    <style>
+        body {
+            background-color: #EDE8F5;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</h:head>
+
+<h:body style="padding:10px 100px;">
+
+<ui:include src="header.xhtml" />
+
+<h2>Bank Accounts</h2>
+
+<table>
+    <tr>
+        <th>Titular Names</th>
+        <th>Currency</th>
+        <th>Current Balance</th>
+        <th>Interest Rate</th>
+        <th>Opening Year</th>
+        <th>Account Type</th>
+    </tr>
+    <ui:repeat value="#{Users.users}" var="user">
+        <tr>
+            <td>#{user.titularNames}</td>
+            <td>#{user.currency}</td>
+            <td>#{user.currentBalance}</td>
+            <td>#{user.interestRate}</td>
+            <td>#{user.openingYear}</td>
+            <td>#{user.accountType}</td>
+        </tr>
+    </ui:repeat>
+</table>
+
+</h:body>
+</html>
