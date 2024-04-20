@@ -13,6 +13,7 @@ public class User {
 	private String accountType;
 	
 	
+	
 	public User(String titularNames, String currency, double currentBalance, double interestRate, int openingYear,
 			String accountType) {
 		super();
