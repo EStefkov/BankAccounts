@@ -9,20 +9,10 @@
     <servlet-class>jakarta.faces.webapp.FacesServlet</servlet-class>
     <load-on-startup>1</load-on-startup>
 </servlet>
-  <servlet>
-  	<servlet-name>BankingService</servlet-name>
-  	<display-name>BankingService</display-name>
-  	<description></description>
-  	<servlet-class>web_services.BankingService</servlet-class>
-  </servlet>
 
 <servlet-mapping>
     <servlet-name>Faces Servlet</servlet-name>
     <url-pattern>*.jsf</url-pattern>
-</servlet-mapping>
-<servlet-mapping>
-	<servlet-name>BankingService</servlet-name>
-	<url-pattern>/BankingService</url-pattern>
 </servlet-mapping>
   
 </web-app>

@@ -1,21 +1,21 @@
 package entities;
 
-/*в ентитиес създаваме управляем клас  който да събира 
- * информация за  потребителя
- *  */
 public class User {
 
-    private int id; // Added id field
+    private static int idCounter = 1; // Static counter for generating unique IDs
+
+    private int id; // Unique ID for each user
     private String titularNames;
     private String currency;
     private double currentBalance;
     private double interestRate;
     private int openingYear;
     private String accountType;
-
+    
     public User(String titularNames, String currency, double currentBalance, double interestRate, int openingYear,
             String accountType) {
         super();
+        this.id = idCounter++;
         this.titularNames = titularNames;
         this.currency = currency;
         this.currentBalance = currentBalance;
@@ -28,11 +28,11 @@ public class User {
         super();
     }
 
-    public int getId() { // Added this getter
+    public int getId() {
         return id;
     }
 
-    public void setId(int id) { // Added this setter
+    public void setId(int id) {
         this.id = id;
     }
 
