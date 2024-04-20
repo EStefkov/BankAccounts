@@ -21,13 +21,14 @@ import com.google.gson.Gson;
 @SessionScoped
 public class Users implements Serializable {
 
+    private int userId; // Add this field
     private String titularNames;
     private String currency;
     private double currentBalance;
     private double interestRate;
     private int openingYear;
     private String accountType;
-    private double amount; // Added this field
+    private double amount;
 
     private Date date;
 
@@ -37,6 +38,14 @@ public class Users implements Serializable {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public int getUserId() { // Add this getter
+        return userId;
+    }
+
+    public void setUserId(int userId) { // Add this setter
+        this.userId = userId;
     }
 
     public String getTitularNames() {
@@ -87,11 +96,11 @@ public class Users implements Serializable {
         this.accountType = accountType;
     }
 
-    public double getAmount() { // Added this getter
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) { // Added this setter
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
@@ -117,9 +126,9 @@ public class Users implements Serializable {
     @Path("/addBalance")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public String addBalance() { // Removed the parameter here
+    public String addBalance() {
         Gson gson = new Gson();
-        User user = Database.getUserByTitularNames(this.titularNames);
+        User user = Database.getUserById(this.userId);
         if (user != null) {
             user.setCurrentBalance(user.getCurrentBalance() + this.amount);
             Database.updateUser(user);
@@ -128,24 +137,52 @@ public class Users implements Serializable {
             return gson.toJson("failure");
         }
     }
+    
+ // Полето за съхранение на намерения потребител
+    private User foundUser;
+
+    // Гетър и сетър за полето
+    public User getFoundUser() {
+        return foundUser;
+    }
+
+    public void setFoundUser(User foundUser) {
+        this.foundUser = foundUser;
+    }
+
+    // Метод за търсене на потребител по ID
+    @POST
+    @Path("/getUserById")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getUserById() {
+        Gson gson = new Gson();
+        User user = Database.getUserById(this.userId);
+        if (user != null) {
+            this.foundUser = user; // Задаване на намерения потребител
+            return gson.toJson("success");
+        } else {
+            return gson.toJson("failure");
+        }
+    }
+    
 
     public void send() {
         User user = new User(titularNames, currency, currentBalance, interestRate, openingYear, accountType);
         Database.addUser(user);
-        // return "success";
     }
 }
 
 class BalanceUpdate {
-    private String titularNames;
+    private int id;
     private double amount;
 
-    public String getTitularNames() {
-        return titularNames;
+    public int getId() {
+        return id;
     }
 
-    public void setTitularNames(String titularNames) {
-        this.titularNames = titularNames;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public double getAmount() {

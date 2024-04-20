@@ -5,77 +5,82 @@ package entities;
  *  */
 public class User {
 
-	private String titularNames;
-	private String currency;
-	private double currentBalance;
-	private double interestRate;
-	private int openingYear;
-	private String accountType;
-	
-	
-	
-	public User(String titularNames, String currency, double currentBalance, double interestRate, int openingYear,
-			String accountType) {
-		super();
-		this.titularNames = titularNames;
-		this.currency = currency;
-		this.currentBalance = currentBalance;
-		this.interestRate = interestRate;
-		this.openingYear = openingYear;
-		this.accountType = accountType;
-	}
+    private int id; // Added id field
+    private String titularNames;
+    private String currency;
+    private double currentBalance;
+    private double interestRate;
+    private int openingYear;
+    private String accountType;
 
-	public User() {
-		super();
-	}
+    public User(String titularNames, String currency, double currentBalance, double interestRate, int openingYear,
+            String accountType) {
+        super();
+        this.titularNames = titularNames;
+        this.currency = currency;
+        this.currentBalance = currentBalance;
+        this.interestRate = interestRate;
+        this.openingYear = openingYear;
+        this.accountType = accountType;
+    }
 
-	public String getTitularNames() {
-		return titularNames;
-	}
+    public User() {
+        super();
+    }
 
-	public void setTitularNames(String titularNames) {
-		this.titularNames = titularNames;
-	}
+    public int getId() { // Added this getter
+        return id;
+    }
 
-	public String getCurrency() {
-		return currency;
-	}
+    public void setId(int id) { // Added this setter
+        this.id = id;
+    }
 
-	public void setCurrency(String currency) {
-		this.currency = currency;
-	}
+    public String getTitularNames() {
+        return titularNames;
+    }
 
-	public double getCurrentBalance() {
-		return currentBalance;
-	}
+    public void setTitularNames(String titularNames) {
+        this.titularNames = titularNames;
+    }
 
-	public void setCurrentBalance(double currentBalance) {
-		this.currentBalance = currentBalance;
-	}
+    public String getCurrency() {
+        return currency;
+    }
 
-	public double getInterestRate() {
-		return interestRate;
-	}
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
 
-	public void setInterestRate(double interestRate) {
-		this.interestRate = interestRate;
-	}
+    public double getCurrentBalance() {
+        return currentBalance;
+    }
 
-	public int getOpeningYear() {
-		return openingYear;
-	}
+    public void setCurrentBalance(double currentBalance) {
+        this.currentBalance = currentBalance;
+    }
 
-	public void setOpeningYear(int openingYear) {
-		this.openingYear = openingYear;
-	}
+    public double getInterestRate() {
+        return interestRate;
+    }
 
-	public String getAccountType() {
-		return accountType;
-	}
+    public void setInterestRate(double interestRate) {
+        this.interestRate = interestRate;
+    }
 
-	public void setAccountType(String accountType) {
-		this.accountType = accountType;
-	}
-	
-	
+    public int getOpeningYear() {
+        return openingYear;
+    }
+
+    public void setOpeningYear(int openingYear) {
+        this.openingYear = openingYear;
+    }
+
+    public String getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(String accountType) {
+        this.accountType = accountType;
+    }
 }
