@@ -31,6 +31,7 @@ public class Users implements Serializable {
     private double amount;
 
     private Date date;
+    private User foundUser;
 
     public Date getDate() {
         return date;
@@ -104,6 +105,14 @@ public class Users implements Serializable {
         this.amount = amount;
     }
 
+    public User getFoundUser() {
+        return foundUser;
+    }
+
+    public void setFoundUser(User foundUser) {
+        this.foundUser = foundUser;
+    }
+
     @GET
     @Path("/all")
     @Produces(MediaType.APPLICATION_JSON)
@@ -131,11 +140,11 @@ public class Users implements Serializable {
         User user = Database.getUserById(this.userId);
         if (user != null) {
             if ("debit".equals(user.getAccountType())) {
-                user.setCurrentBalance(user.getCurrentBalance() + this.amount - (this.amount * 0.05)); // 2% interest rate
+                user.setCurrentBalance(user.getCurrentBalance() + this.amount - (this.amount * 0.05)); 
             } else if ("credit".equals(user.getAccountType())) {
-                user.setCurrentBalance(user.getCurrentBalance() + this.amount); // 5% interest rate
+                user.setCurrentBalance(user.getCurrentBalance() + this.amount); 
             } else if ("savings".equals(user.getAccountType())) {
-                user.setCurrentBalance(user.getCurrentBalance() + this.amount - (this.amount * 0.03)); // 3% interest rate
+                user.setCurrentBalance(user.getCurrentBalance() + this.amount - (this.amount * 0.02));
             }
             Database.updateUser(user);
             return gson.toJson("success");
@@ -144,35 +153,33 @@ public class Users implements Serializable {
         }
     }
     
-    private User foundUser;
-
- // Гетър и сетър за полето
- public User getFoundUser() {
-     return foundUser;
- }
-
- public void setFoundUser(User foundUser) {
-     this.foundUser = foundUser;
- }
-
- // Метод за търсене на потребител по ID
- @POST
- @Path("/getUserById")
- @Consumes(MediaType.APPLICATION_JSON)
- @Produces(MediaType.APPLICATION_JSON)
- public String getUserById() {
-     Gson gson = new Gson();
-     User user = Database.getUserById(this.userId);
-     if (user != null) {
-         this.foundUser = user; // Задаване на намерения потребител
-         return gson.toJson("success");
-     } else {
-         return gson.toJson("failure");
-     }
- }
+    @POST
+    @Path("/getUserById")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public String getUserById() {
+        Gson gson = new Gson();
+        User user = Database.getUserById(this.userId);
+        if (user != null) {
+            this.foundUser = user; // Set the found user
+            return gson.toJson("success");
+        } else {
+            return gson.toJson("failure");
+        }
+    }
     
+    public void updateInterestRate() {
+        if ("debit".equals(accountType)) {
+            interestRate = 0.03; // 3% interest rate
+        } else if ("credit".equals(accountType)) {
+            interestRate = 0.1; // 10% interest rate
+        } else if ("savings".equals(accountType)) {
+            interestRate = 0.05; // 5% interest rate
+        }
+    }
 
     public void send() {
+        updateInterestRate(); // Update the interest rate before creating the user
         User user = new User(titularNames, currency, currentBalance, interestRate, openingYear, accountType);
         Database.addUser(user);
     }

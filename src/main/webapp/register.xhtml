@@ -8,61 +8,40 @@
 <h:head>
 	<title>Create Bank Account</title>
 	<style>
-body {
-	background-color: #EDE8F5;
-}
-</style>
+		body {
+			background-color: #EDE8F5;
+		}
+	</style>
 </h:head>
-
-
 
 <h:body style="padding:10px 100px;">
 
-	
-	
-				
-<ui:include src="header.xhtml" />
+	<ui:include src="header.xhtml" />
 	<h:form>
-	
-	
 		<h:panelGrid columns="2">
-			Име <h:inputText required="true" id="name" value="#{Users.titularNames}"/>
-			
-					
-			<h:outputLabel value="Валута" for="currency"/>
-    		<h:selectOneMenu value="#{Users.currency}">
+			Име <h:inputText required="true" id="name" value="#{Users.titularNames}" />
+			<h:outputLabel value="Валута" for="currency" />
+			<h:selectOneMenu value="#{Users.currency}">
 				<f:selectItem itemValue="USD" itemLabel="USD" />
 				<f:selectItem itemValue="EUR" itemLabel="EUR" />
 				<f:selectItem itemValue="GBP" itemLabel="GBP" />
 			</h:selectOneMenu>
-			
-			<h:outputLabel value="Баланс" for="balance"/>
-			<h:outputText value="#{Users.currentBalance}" id="balance"/>
-			
-			<h:outputLabel value="Лихвен процент" for="interestRate"/>
-			<h:outputText value="#{Users.interestRate}" id="interestRate"/>
-					
-			<h:outputLabel value="Година на отваряне на сметка" for="peningYear"/>
-			<h:inputText id="peningYear" value="#{Users.openingYear}">
-			</h:inputText>
-			
-			
+			<h:outputLabel value="Лихвен процент" for="interestRate" />
+			<h:outputText value="#{Users.interestRate}" id="interestRate" />
+			<h:outputLabel value="Година на отваряне на сметка" for="peningYear" />
+			<h:inputText id="peningYear" value="#{Users.openingYear}" />
 			<h:outputLabel value="Вид на сметката" />
 			<h:selectOneRadio value="#{Users.accountType}">
-    			<f:selectItem itemValue="debit" itemLabel="Дебитна" />
-    			<f:selectItem itemValue="credit" itemLabel="Кредитна" />
-    			<f:selectItem itemValue="savings" itemLabel="Спестовна" />
+				<f:selectItem itemValue="debit" itemLabel="Дебитна" />
+				<f:selectItem itemValue="credit" itemLabel="Кредитна" />
+				<f:selectItem itemValue="savings" itemLabel="Спестовна" />
+				<f:ajax render="interestRate" listener="#{Users.updateInterestRate}" />
 			</h:selectOneRadio>
 
-
-			<h:commandButton value="Изпрати" action="#{Users.send()}"/>	 
-			
+			<h:commandButton value="Изпрати" action="#{Users.send()}" />
 		</h:panelGrid>
-	
+
 	</h:form>
-	
-			
-	
 
 </h:body>
 
