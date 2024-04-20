@@ -4,64 +4,75 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets">
 
 	<style>
-/* CSS styles */
-h3 {
-	color: #3D52A0;
-	margin-top: 0;
-	padding-top: 0;
-	margin-bottom: 5px;
-	transition: color 0.3s ease;
-	
-}
-h3:hover {
-    color: #7091E6;
-}
+		/* CSS styles */
+		h3 {
+			color: #3D52A0;
+			margin-top: 0;
+			padding-top: 0;
+			margin-bottom: 5px;
+			transition: color 0.3s ease;	
+		}
 
-#myPanel {
-	width: 50%;
-	margin: auto;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	font-size: 15pt
-}
+		h3:hover {
+			color: #7091E6;
+		}
 
-hr {
-	height: 8px;
-	background-color: #3D52A0;
-	margin: 5px 0; 
-	
-	transition: background-color 0.3s ease;
-}
+		#myPanel {
+			width: 50%;
+			margin: auto;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 15pt;
+		}
 
-hr:hover {
-    background-color: #7091E6;
-}
+		hr {
+			height: 8px;
+			background-color: #3D52A0;
+			margin: 5px 0; 	
+			transition: background-color 0.3s ease;
+		}
 
-</style>
+		hr:hover {
+			background-color: #7091E6;
+		}
 
-<hr />
+		/* Button Styles */
+		.myButton {
+			text-decoration: none;
+			padding: 10px 20px;
+			font-size: 18px;
+			border-radius: 5px;
+			background-color: #3D52A0;
+			color: white;
+			border: 2px solid #3D52A0;
+			cursor: pointer;
+			margin-right: 10px;
+			transition: background-color 0.3s ease, color 0.3s ease;
+			
+		}
 
-<h:panelGroup style="font-size:20pt; font-weight:bold;">
+		.myButton:hover {
+			background-color: #7091E6;
+			border-color: #7091E6;
+			color: #fff;
+		}
 
+	</style>
 
-<h:panelGroup id="myPanel" layout="block" style="float:right; vertical-align: top;">
-	<h:outputLink value="index.jsf">Начало</h:outputLink> |
-	<h:outputLink value="register.jsf">Регистрация</h:outputLink> |
-	<h:outputLink value="accounts.jsf">Акаунти</h:outputLink> |
-</h:panelGroup>
+	<hr />
 
+	<h:panelGroup style="font-size:20pt; font-weight:bold;">
+		<h:panelGroup id="myPanel" layout="block" style="float:right; vertical-align: top;">
+			<h:outputLink value="index.jsf" styleClass="myButton">Начало</h:outputLink> 
+			<h:outputLink value="register.jsf" styleClass="myButton">Регистрация</h:outputLink> 
+			<h:outputLink value="accounts.jsf" styleClass="myButton">Акаунти</h:outputLink> 
+		</h:panelGroup>
 
-	<h:graphicImage value="/resources/finalLogo.png" alt="IKARUS Logo"
-		width="100px" height="100px" />
-	<h3>IKARUS</h3>	
-	
-	
+		<h:graphicImage value="/resources/finalLogo.png" alt="IKARUS Logo" width="100px" height="100px" />
+		<h3>IKARUS</h3>
+	</h:panelGroup>
 
-</h:panelGroup>
-
-
-
-<hr />
+	<hr />
 
 </ui:composition>

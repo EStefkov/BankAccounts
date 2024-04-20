@@ -2,9 +2,9 @@ package entities;
 
 public class User {
 
-    private static int idCounter = 1; // Static counter for generating unique IDs
+    private static int idCounter = 1; 
 
-    private int id; // Unique ID for each user
+    private int id; 
     private String titularNames;
     private String currency;
     private double currentBalance;
