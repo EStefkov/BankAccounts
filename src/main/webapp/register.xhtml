@@ -14,11 +14,17 @@ body {
 </style>
 </h:head>
 
+
+
 <h:body style="padding:10px 100px;">
 
-	<ui:include src="header.xhtml" />
-
+	
+	
+				
+<ui:include src="header.xhtml" />
 	<h:form>
+	
+	
 		<h:panelGrid columns="2">
 			Име <h:inputText required="true" id="name" value="#{Users.titularNames}"/>
 			
@@ -43,17 +49,20 @@ body {
 			
 			<h:outputLabel value="Вид на сметката" />
 			<h:selectOneRadio value="#{Users.accountType}">
-    			<f:selectItem itemValue="Дебитна" itemLabel="Дебитна" />
-    			<f:selectItem itemValue="Кредитна" itemLabel="Кредитна" />
-    			<f:selectItem itemValue="Спестовна" itemLabel="Спестовна" />
+    			<f:selectItem itemValue="debit" itemLabel="Дебитна" />
+    			<f:selectItem itemValue="credit" itemLabel="Кредитна" />
+    			<f:selectItem itemValue="savings" itemLabel="Спестовна" />
 			</h:selectOneRadio>
 
 
 			<h:commandButton value="Изпрати" action="#{Users.send()}"/>	 
 			
 		</h:panelGrid>
+	
 	</h:form>
-
+	
+			
+	
 
 </h:body>
 
