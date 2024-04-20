@@ -1,5 +1,5 @@
-# The IKARUS system is a banking system that offers functionality for managing bank accounts. The system allows users to view, add balance, and search for information about bank accounts.
-
+# The IKARUS 
+The IKARUS system is a banking system that offers functionality for managing bank accounts. The system allows users to view, add balance, and search for information about bank accounts.
 This project was created for educational purposes
 1. **HOME PAGE**
 ![image](https://github.com/EStefkov/BankAccounts/assets/93265496/7c98b1c2-820d-4bb2-adcd-1e815c28fbbc)
